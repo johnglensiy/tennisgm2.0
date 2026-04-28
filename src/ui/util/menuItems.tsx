@@ -185,6 +185,14 @@ export const menuItems: (MenuItemLink | MenuItemHeader)[] = [
 			},
 			{
 				type: "link",
+				active: (pageID) => pageID === "weeklyTournament",
+				league: true,
+				commandPalette: true,
+				path: ["weekly_tournament"],
+				text: "Weekly Tournament",
+			},
+			{
+				type: "link",
 				active: (pageID) => pageID === "dailySchedule",
 				league: true,
 				commandPalette: true,

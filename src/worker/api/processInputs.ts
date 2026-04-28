@@ -1132,6 +1132,7 @@ export default {
 	playerStats,
 	playoffs: validateSeasonOnly,
 	powerRankings,
+	weeklyTournament: () => ({}),
 	relatives: player,
 	resetPassword,
 	roster,

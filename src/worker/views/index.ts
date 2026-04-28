@@ -82,6 +82,7 @@ export { default as playerGraphs } from "./playerGraphs.ts";
 export { default as playerStats } from "./playerStats.ts";
 export { default as playoffs } from "./playoffs.ts";
 export { default as powerRankings } from "./powerRankings.ts";
+export { default as weeklyTournament } from "./weeklyTournament.ts";
 export { default as protectPlayers } from "./protectPlayers.ts";
 export { default as relatives } from "./relatives.ts";
 export { default as resetPassword } from "./resetPassword.ts";
