@@ -438,21 +438,14 @@ export const POSITIONS = ["PG", "G", "SG", "GF", "SF", "F", "PF", "FC", "C"];
 export const POSITION_COUNTS = {};
 
 export const RATINGS: RatingKey[] = [
-	"hgt",
-	"stre",
+	"srv",
+	"ret",
+	"fh",
+	"bh",
 	"spd",
-	"jmp",
 	"endu",
-	"ins",
-	"dnk",
-	"ft",
-	"fg",
-	"tp",
-	"oiq",
-	"diq",
-	"drb",
-	"pss",
-	"reb",
+	"mnt",
+	"hgt",
 ];
 
 export const SIMPLE_AWARDS = [
