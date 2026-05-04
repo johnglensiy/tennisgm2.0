@@ -433,7 +433,38 @@ export const TEAM_STATS_TABLES = {
 	},
 };
 
-export const POSITIONS = ["PG", "G", "SG", "GF", "SF", "F", "PF", "FC", "C"];
+export type Surface = "clay" | "hard" | "grass";
+
+// Multipliers applied to composite ratings per surface in calcServePointProb.
+// Values > 1 amplify that composite, < 1 diminish it.
+export const SURFACE_MODIFIERS: Record<
+	Surface,
+	Partial<Record<keyof typeof COMPOSITE_WEIGHTS, number>>
+> = {
+	clay: {
+		serving: 0.85, // serve is less dominant on slow clay
+		returning: 1.1,
+		baseline: 1.2, // clay rewards baseline grinders
+		movement: 1.15, // court coverage matters more in long rallies
+		endurance: 1.2, // longer points drain stamina
+	},
+	hard: {
+		serving: 1.0,
+		returning: 1.0,
+		baseline: 1.0,
+		movement: 1.0,
+		endurance: 1.0,
+	},
+	grass: {
+		serving: 1.2, // grass amplifies serve dominance
+		returning: 0.9, // harder to read fast serves
+		baseline: 0.85, // low bounce punishes baseline game
+		movement: 0.95,
+		endurance: 0.9, // points are shorter
+	},
+};
+
+export const POSITIONS = ["P"];
 
 export const POSITION_COUNTS = {};
 
