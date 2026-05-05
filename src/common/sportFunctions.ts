@@ -1,3 +1,7 @@
+const SPORT_FALLBACKS: Partial<Record<string, string>> = {
+	tennis: "basketball",
+};
+
 export const bySport = <T>(
 	object:
 		| {
@@ -22,6 +26,13 @@ export const bySport = <T>(
 		return object[sport];
 	}
 
+	const fallback = SPORT_FALLBACKS[sport];
+	if (fallback !== undefined && Object.hasOwn(object, fallback)) {
+		// https://github.com/microsoft/TypeScript/issues/21732
+		// @ts-expect-error
+		return object[fallback];
+	}
+
 	if (Object.hasOwn(object, "default")) {
 		// https://github.com/microsoft/TypeScript/issues/21732
 		// @ts-expect-error
@@ -32,7 +43,7 @@ export const bySport = <T>(
 };
 
 export const isSport = (
-	sport: "baseball" | "basketball" | "football" | "hockey",
+	sport: "baseball" | "basketball" | "football" | "hockey" | "tennis",
 ) => {
 	return sport === process.env.SPORT;
 };

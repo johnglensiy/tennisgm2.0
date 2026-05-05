@@ -95,8 +95,17 @@ export const babelPluginSportFunctionsFactory =
 								propertiesByKey[getObjectKey(property)] = property;
 							}
 
+							const SPORT_FALLBACKS: Partial<Record<string, string>> = {
+								tennis: "basketball",
+							};
+
+							const fallbackSport = SPORT_FALLBACKS[sport];
 							const value =
-								propertiesByKey[sport]?.value ?? propertiesByKey.default?.value;
+								propertiesByKey[sport]?.value ??
+								(fallbackSport !== undefined
+									? propertiesByKey[fallbackSport]?.value
+									: undefined) ??
+								propertiesByKey.default?.value;
 
 							if (value === undefined) {
 								throw new Error(`Missing sport (${sport}) and default`);

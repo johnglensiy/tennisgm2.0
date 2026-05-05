@@ -142,10 +142,14 @@ const gameAttributesKeysSportSpecific = {
 	]),
 };
 export const gameAttributesKeysOtherSports = new Set<GameAttributeKey>();
+const _currentSportKeys =
+	gameAttributesKeysSportSpecific[
+		process.env.SPORT as keyof typeof gameAttributesKeysSportSpecific
+	] ?? gameAttributesKeysSportSpecific.basketball;
 for (const [sport, keys] of Object.entries(gameAttributesKeysSportSpecific)) {
 	if (sport !== process.env.SPORT) {
 		for (const key of keys) {
-			if (!gameAttributesKeysSportSpecific[process.env.SPORT].has(key)) {
+			if (!_currentSportKeys.has(key)) {
 				gameAttributesKeysOtherSports.add(key);
 			}
 		}
